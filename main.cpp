@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 int main()
 {
     double num1{ };
@@ -18,16 +17,22 @@ int main()
 
     double result{ };
 
-    if (op == '+') {
-        result = num1 + num2;
-    } else if (op == '-') {
-        result = num1 - num2;
-    } else if (op == '*') {
-        result = num1 * num2;
-    } else if (op == '/') {
-        result = num1 / num2;
-    } else {
-        std::cout << "Invalid Operator!\n";
+    switch(op)
+    {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            result = num1 / num2;
+            break;
+        default:
+            std::cout << "Invalid input!\n";
     }
 
     std::cout << result;
