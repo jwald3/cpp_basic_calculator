@@ -1,16 +1,34 @@
 #include <iostream>
 
 
-int main() {
+int main()
+{
+    double num1{ };
+    double num2{ };
+    char op{}; // "operator" is a reserved keyword, otherwise I would use that identifier
 
     std::cout << "Enter first number: ";
-    double num1{ };
     std::cin >> num1;
 
+    std::cout << "Enter operator: ";
+    std::cin >> op;
+
     std::cout << "Enter second number: ";
-    double num2{ };
     std::cin >> num2;
 
-    std::cout << num1 << " + " << num2 << " = " << num1 + num2 << '\n';
-    return 0;
+    double result{ };
+
+    if (op == '+') {
+        result = num1 + num2;
+    } else if (op == '-') {
+        result = num1 - num2;
+    } else if (op == '*') {
+        result = num1 * num2;
+    } else if (op == '/') {
+        result = num1 / num2;
+    } else {
+        std::cout << "Invalid Operator!\n";
+    }
+
+    std::cout << result;
 }
