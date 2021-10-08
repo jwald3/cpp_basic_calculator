@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 enum Operation
 {                       // provide abstraction layer, allows reassignment for operators
@@ -6,6 +7,7 @@ enum Operation
     subtract='-',
     multiply='*',
     divide='/',
+    exponent='^',
 };
 
 double calculate(double num1, double num2, Operation op)
@@ -21,6 +23,8 @@ double calculate(double num1, double num2, Operation op)
             return num1 * num2;
         case divide:
             return num1 / num2;
+        case exponent:
+            return pow(num1, num2);
         default:
             std::cout << "Invalid input!\n";
             std::exit(EXIT_FAILURE);
@@ -59,7 +63,7 @@ int main()
     {
         num1 = getNumber(OK);
 
-        std::cout << "Provide operation (+, -, *, /): ";
+        std::cout << "Provide operation (+, -, *, /, ^): ";
         std::cin >> op; // catch standard
 
         auto enum_op = static_cast<Operation>(op); // convert char input to Operation enum type
