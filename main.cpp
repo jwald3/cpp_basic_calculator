@@ -8,7 +8,8 @@ enum Operation
     divide='/',
 };
 
-double calculate(double num1, double num2, Operation op) {
+double calculate(double num1, double num2, Operation op)
+{
     // handle switch statement in its own function for clarity in main function
     switch(op)
     {
@@ -34,7 +35,8 @@ auto getNumber(bool valInput)           // "valInput" for the do/while loop. Wil
         std::cout << "Enter number: ";  // perpetual loop to ensure that user input is numeric type
         std::cin >> numVal;
         valInput = !std::cin.fail();
-        if(!valInput) {
+        if(!valInput)
+        {
             std::cin.clear();
             std::cin.ignore();
         }
