@@ -26,19 +26,19 @@ double calculate(double num1, double num2, Operation op) {
     }
 }
 
-auto getNumber(bool valInput)
-{
+auto getNumber(bool valInput)           // "valInput" for the do/while loop. Will reuse "OK" variable because it's
+{                                       // reassigned before control is encountered
     double numVal;
 
     do {
-        std::cout << "Enter number: ";    // perpetual loop to ensure that user input is numeric type
+        std::cout << "Enter number: ";  // perpetual loop to ensure that user input is numeric type
         std::cin >> numVal;
         valInput = !std::cin.fail();
         if(!valInput) {
             std::cin.clear();
             std::cin.ignore();
         }
-    } while(!valInput);                               // runs until number is given and OK is flipped to true
+    } while(!valInput);                 // runs until number is given and OK is flipped to true
 
     return numVal;
 }
