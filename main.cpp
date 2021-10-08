@@ -14,6 +14,7 @@ double calculate(double num1, double num2, char op) {
             return num1 / num2;
         default:
             std::cout << "Invalid input!\n";
+            std::exit(EXIT_FAILURE);
     }
 }
 
@@ -22,7 +23,7 @@ int main()
     double num1{ };
     double num2{ };
     char op{}; // "operator" is a reserved keyword, otherwise I would use that identifier
-    bool calcOn{ true }; // will handle program state, while true, user can calculate again
+    auto calcOn{ true }; // will handle program state, while true, user can calculate again
     char contCalc{ };
 
     while (calcOn) {
@@ -36,7 +37,7 @@ int main()
         std::cout << "Enter second number: ";
         std::cin >> num2;
 
-        double result{calculate(num1, num2, op)};
+        auto result{calculate(num1, num2, op)};
 
         std::cout << result << '\n';
         contCalc = '\0'; // reset (otherwise program won't let you change the option later)
