@@ -33,19 +33,36 @@ int main()
     char op; // "operator" is a reserved keyword, otherwise I would use that identifier
     auto calcOn{ true }; // will handle program state, while true, user can calculate again
     char contCalc{ };
+    bool OK; // will check state of user input, true means correct input, false means incorrect
+
 
     while (calcOn) {
         // calculator will run until user ends it
-        std::cout << "Enter first number: ";
-        std::cin >> num1;
+        do {
+            std::cout << "Enter first number: ";    // perpetual loop to ensure that user input is numeric type
+            std::cin >> num1;
+            OK = !std::cin.fail();
+            if(!OK) {
+                std::cin.clear();
+                std::cin.ignore();
+            }
+        } while(!OK);                               // runs until number is given and OK is flipped to true
+
 
         std::cout << "Provide operation (+, -, *, /): ";
         std::cin >> op; // catch standard
 
         auto enum_op = static_cast<Operation>(op); // convert char input to Operation enum type
 
-        std::cout << "Enter second number: ";
-        std::cin >> num2;
+        do {
+            std::cout << "Enter second number: ";
+            std::cin >> num2;
+            OK = !std::cin.fail();
+            if(!OK) {
+                std::cin.clear();
+                std::cin.ignore();
+            }
+        } while(!OK);
 
         auto result{calculate(num1, num2, enum_op)};
 
