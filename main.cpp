@@ -55,7 +55,8 @@ int main()
     bool OK{}; // will check state of user input, true means correct input, false means incorrect
 
 
-    while (calcOn) {
+    while (calcOn)
+    {
         num1 = getNumber(OK);
 
         std::cout << "Provide operation (+, -, *, /): ";
