@@ -7,5 +7,5 @@ Simple four-function calculator written in C++. The program uses the following c
 * Switch statements
 * "auto" variable type
 * Console input handling
-* Do/do while loops
+* While/do while loops
 * Program states with boolean variables
