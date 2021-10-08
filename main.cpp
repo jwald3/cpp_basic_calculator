@@ -84,4 +84,5 @@ int main()
     }
 
     std::cout << "Have a nice day!";
+    std::exit(EXIT_SUCCESS);
 }
