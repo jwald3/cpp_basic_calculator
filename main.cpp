@@ -1,16 +1,24 @@
 #include <iostream>
 
-double calculate(double num1, double num2, char op) {
+enum Operation
+{                       // provide abstraction layer, allows reassignment for operators
+    add='+',
+    subtract='-',
+    multiply='*',
+    divide='/',
+};
+
+double calculate(double num1, double num2, Operation op) {
     // handle switch statement in its own function for clarity in main function
     switch(op)
     {
-        case '+':
+        case add:
             return num1 + num2;
-        case '-':
+        case subtract:
             return num1 - num2;
-        case '*':
+        case multiply:
             return num1 * num2;
-        case '/':
+        case divide:
             return num1 / num2;
         default:
             std::cout << "Invalid input!\n";
@@ -22,7 +30,7 @@ int main()
 {
     double num1{ };
     double num2{ };
-    char op{}; // "operator" is a reserved keyword, otherwise I would use that identifier
+    char op; // "operator" is a reserved keyword, otherwise I would use that identifier
     auto calcOn{ true }; // will handle program state, while true, user can calculate again
     char contCalc{ };
 
@@ -31,13 +39,15 @@ int main()
         std::cout << "Enter first number: ";
         std::cin >> num1;
 
-        std::cout << "Enter operator: ";
-        std::cin >> op;
+        std::cout << "Provide operation (+, -, *, /): ";
+        std::cin >> op; // catch standard
+
+        auto enum_op = static_cast<Operation>(op); // convert char input to Operation enum type
 
         std::cout << "Enter second number: ";
         std::cin >> num2;
 
-        auto result{calculate(num1, num2, op)};
+        auto result{calculate(num1, num2, enum_op)};
 
         std::cout << result << '\n';
         contCalc = '\0'; // reset (otherwise program won't let you change the option later)
